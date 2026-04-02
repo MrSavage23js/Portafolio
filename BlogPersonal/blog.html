@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Blog | dev.savage</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Mono:wght@300;400;500&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#080808;
+  --surface:#111111;
+  --surface2:#181818;
+  --border:#2a1a1a;
+  --border2:#3a2020;
+  --red:#ff2020;
+  --red-dim:rgba(255,32,32,0.1);
+  --red-glow:rgba(255,32,32,0.25);
+  --gold:#ffcc00;
+  --text:#f0eded;
+  --muted:#806060;
+  --muted2:#4a2a2a;
+  --mono:'DM Mono',monospace;
+  --head:'Syne',sans-serif;
+  --serif:'Lora',serif;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--mono);min-height:100vh;
+  background-image:radial-gradient(ellipse 600px 400px at 100% 0%, rgba(255,32,32,0.05) 0%, transparent 60%)}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 3rem;
+  background:rgba(8,8,8,0.9);border-bottom:1px solid var(--border);
+  backdrop-filter:blur(16px);
+}
+.nav-logo{font-family:var(--head);font-size:1rem;font-weight:800;color:var(--red);cursor:pointer;letter-spacing:-0.02em}
+.nav-right{display:flex;align-items:center;gap:1.5rem}
+.nav-link{font-size:0.72rem;color:var(--muted);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:color 0.2s}
+.nav-link:hover{color:var(--text)}
+.nav-search-wrap{position:relative}
+.nav-search{
+  background:var(--surface);border:1px solid var(--border);border-radius:4px;
+  padding:0.45rem 0.9rem 0.45rem 2rem;
+  font-family:var(--mono);font-size:0.78rem;color:var(--text);
+  outline:none;transition:border-color 0.2s;width:200px;
+}
+.nav-search:focus{border-color:var(--red);width:260px}
+.nav-search::placeholder{color:var(--muted2)}
+.search-icon{position:absolute;left:0.6rem;top:50%;transform:translateY(-50%);font-size:0.75rem;color:var(--muted);pointer-events:none}
+
+/* ── LAYOUT ── */
+.page{max-width:1100px;margin:0 auto;padding:3rem 1.5rem 5rem}
+.page.narrow{max-width:760px}
+
+/* ── HOME: HERO ── */
+.blog-hero{padding:3rem 0 2.5rem;border-bottom:1px solid var(--border);margin-bottom:3rem}
+.blog-tag{font-size:0.68rem;color:var(--red);letter-spacing:0.22em;text-transform:uppercase;margin-bottom:0.8rem;display:flex;align-items:center;gap:0.6rem}
+.blog-tag::before{content:'';display:block;width:16px;height:1px;background:var(--red)}
+.blog-title{font-family:var(--head);font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;letter-spacing:-0.04em;line-height:0.95;margin-bottom:1rem}
+.blog-title span{color:var(--red)}
+.blog-sub{font-size:0.88rem;color:var(--muted);line-height:1.7;max-width:500px}
+
+/* ── CATEGORIES ── */
+.cats-wrap{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.cat-btn{
+  padding:0.4rem 1rem;border-radius:20px;
+  font-family:var(--mono);font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;
+  background:transparent;border:1px solid var(--border);color:var(--muted);
+  cursor:pointer;transition:all 0.2s;
+}
+.cat-btn:hover{border-color:var(--muted);color:var(--text)}
+.cat-btn.active{background:var(--red-dim);border-color:var(--red);color:var(--red)}
+
+/* ── FEATURED POST ── */
+.featured{
+  background:var(--surface);border:1px solid var(--border2);border-radius:10px;
+  padding:2.5rem;margin-bottom:2rem;cursor:pointer;
+  transition:all 0.25s;position:relative;overflow:hidden;
+}
+.featured::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(to right,var(--red),transparent);
+}
+.featured:hover{border-color:var(--red);transform:translateY(-2px);box-shadow:0 16px 50px rgba(0,0,0,0.4)}
+.featured-label{font-size:0.62rem;color:var(--red);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1rem}
+.featured-title{font-family:var(--head);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:0.8rem}
+.featured-excerpt{font-size:0.88rem;color:var(--muted);line-height:1.7;margin-bottom:1.5rem;max-width:600px}
+.post-meta{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.post-date{font-size:0.68rem;color:var(--muted2);letter-spacing:0.08em}
+.post-cat{
+  padding:0.2rem 0.65rem;border-radius:20px;font-size:0.63rem;letter-spacing:0.08em;text-transform:uppercase;
+  background:var(--red-dim);border:1px solid rgba(255,32,32,0.25);color:var(--red);
+}
+.post-cat.javascript{background:rgba(255,204,0,0.1);border-color:rgba(255,204,0,0.25);color:var(--gold)}
+.post-cat.css{background:rgba(93,196,245,0.1);border-color:rgba(93,196,245,0.2);color:#5bc4f5}
+.post-cat.python{background:rgba(77,255,145,0.1);border-color:rgba(77,255,145,0.15);color:#4dff91}
+.post-cat.carrera{background:rgba(200,150,255,0.1);border-color:rgba(200,150,255,0.2);color:#c896ff}
+.read-time{font-size:0.68rem;color:var(--muted2)}
+
+/* ── GRID ── */
+.posts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem}
+.post-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:8px;
+  padding:1.5rem;cursor:pointer;transition:all 0.25s;display:flex;flex-direction:column;
+}
+.post-card:hover{border-color:var(--red);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.35)}
+.post-card-title{font-family:var(--head);font-size:1.05rem;font-weight:800;letter-spacing:-0.02em;line-height:1.2;margin:0.7rem 0 0.5rem}
+.post-card-excerpt{font-size:0.78rem;color:var(--muted);line-height:1.65;flex:1;margin-bottom:1rem}
+.post-card-footer{display:flex;justify-content:space-between;align-items:center}
+
+/* ── EMPTY ── */
+.empty-search{text-align:center;padding:4rem 1rem;font-size:0.85rem;color:var(--muted);line-height:1.8}
+.empty-search span{font-size:2rem;display:block;margin-bottom:0.75rem}
+
+/* ── POST DETAIL ── */
+.back-btn{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  font-size:0.72rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;
+  cursor:pointer;transition:color 0.2s;margin-bottom:2.5rem;background:none;border:none;font-family:var(--mono);
+}
+.back-btn:hover{color:var(--red)}
+.back-btn::before{content:'←'}
+
+.post-header{margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+.post-header .post-meta{margin-bottom:1.2rem}
+.post-header-title{font-family:var(--head);font-size:clamp(2rem,5vw,3.2rem);font-weight:800;letter-spacing:-0.04em;line-height:1.05;margin-bottom:1rem}
+.post-header-title span{color:var(--red)}
+.post-lead{font-family:var(--serif);font-size:1.1rem;color:var(--muted);line-height:1.75;font-style:italic}
+
+/* POST BODY */
+.post-body{font-family:var(--serif);font-size:1rem;line-height:1.85;color:#ccc0c0}
+.post-body h2{font-family:var(--head);font-size:1.4rem;font-weight:800;color:var(--text);letter-spacing:-0.02em;margin:2.5rem 0 1rem}
+.post-body h3{font-family:var(--head);font-size:1.1rem;font-weight:700;color:var(--text);margin:2rem 0 0.75rem}
+.post-body p{margin-bottom:1.4rem}
+.post-body strong{color:var(--text);font-weight:700}
+.post-body em{color:var(--muted)}
+.post-body ul,.post-body ol{margin:0 0 1.4rem 1.5rem}
+.post-body li{margin-bottom:0.5rem}
+.post-body code{
+  font-family:var(--mono);font-size:0.82rem;
+  background:var(--surface2);border:1px solid var(--border);
+  padding:0.15rem 0.45rem;border-radius:3px;color:#5bc4f5;
+}
+.post-body pre{
+  background:var(--surface);border:1px solid var(--border2);border-radius:8px;
+  padding:1.4rem;overflow-x:auto;margin:0 0 1.5rem;
+  border-left:3px solid var(--red);
+}
+.post-body pre code{background:none;border:none;padding:0;color:#f0eded;font-size:0.82rem;line-height:1.65}
+.post-body blockquote{
+  border-left:3px solid var(--red);margin:0 0 1.5rem;
+  padding:0.8rem 1.2rem;background:var(--red-dim);border-radius:0 6px 6px 0;
+  font-style:italic;color:var(--muted);
+}
+.post-body .divider{height:1px;background:var(--border);margin:2rem 0}
+
+/* TAGS */
+.post-tags{display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.ptag{padding:0.3rem 0.8rem;background:var(--surface2);border:1px solid var(--border);border-radius:20px;font-size:0.68rem;color:var(--muted);font-family:var(--mono)}
+
+/* RELATED */
+.related-title{font-family:var(--head);font-size:1rem;font-weight:800;margin:3rem 0 1.2rem;letter-spacing:-0.02em}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.related-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:7px;
+  padding:1.1rem;cursor:pointer;transition:all 0.2s;
+}
+.related-card:hover{border-color:var(--red);transform:translateY(-2px)}
+.related-card h4{font-family:var(--head);font-size:0.88rem;font-weight:700;margin-bottom:0.4rem;line-height:1.3}
+.related-card p{font-size:0.7rem;color:var(--muted)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:1.8rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+footer .logo{font-family:var(--head);font-size:0.9rem;font-weight:800;color:var(--red)}
+footer p{font-size:0.68rem;color:var(--muted)}
+
+@media(max-width:640px){
+  nav{padding:1rem 1.2rem}
+  .nav-search-wrap{display:none}
+  .page{padding:2rem 1rem 4rem}
+  footer{padding:1.5rem 1rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo" onclick="goHome()">dev.savage</div>
+  <div class="nav-right">
+    <span class="nav-link" onclick="goHome()">Blog</span>
+    <a class="nav-link" href="../portfolio.html">Portafolio</a>
+    <div class="nav-search-wrap">
+      <span class="search-icon">🔍</span>
+      <input class="nav-search" id="searchInput" placeholder="Buscar artículo..." oninput="onSearch(this.value)"/>
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main id="main"></main>
+
+<footer>
+  <div class="logo">dev.savage · blog</div>
+  <p>Santiago Gómez García · 2025</p>
+</footer>
+
+<script>
+// ════════════════════════════════
+//   POSTS DATA
+// ════════════════════════════════
+const posts = [
+  {
+    id: 1,
+    title: 'Cómo reduje el tiempo de carga de un sitio web un 45%',
+    titleHighlight: '45%',
+    excerpt: 'Técnicas reales que apliqué en proyectos freelance: lazy loading, compresión de imágenes, minificación y más.',
+    category: 'rendimiento',
+    date: '12 Mar 2025',
+    readTime: '7 min',
+    featured: true,
+    tags: ['rendimiento', 'optimización', 'web', 'javascript'],
+    body: `
+      <p>Cuando un cliente me contrató para mejorar su tienda online, lo primero que medí fue el tiempo de carga con <code>Lighthouse</code>. El resultado: <strong>8.4 segundos</strong> en móvil. Inaceptable. En este artículo te cuento exactamente qué hice para bajar eso a <strong>4.6 segundos</strong>.</p>
+      <h2>1. Auditoría inicial con Lighthouse</h2>
+      <p>Antes de tocar cualquier línea de código, necesitas saber qué está fallando. Abre Chrome DevTools → Lighthouse → genera el reporte. Los puntos clave a revisar:</p>
+      <ul>
+        <li><strong>Largest Contentful Paint (LCP):</strong> cuánto tarda en cargar el elemento más grande</li>
+        <li><strong>First Input Delay (FID):</strong> tiempo de respuesta al primer clic</li>
+        <li><strong>Cumulative Layout Shift (CLS):</strong> cuánto se "mueve" el contenido</li>
+      </ul>
+      <h2>2. Optimización de imágenes</h2>
+      <p>Este fue el mayor culpable. El sitio tenía imágenes de <strong>3–4MB</strong> sin comprimir. Lo que hice:</p>
+      <pre><code>// Convertir a WebP con compresión 80%
+// Antes:  banner.jpg  →  3.2 MB
+// Después: banner.webp →  180 KB
+// Ahorro: 94%</code></pre>
+      <p>Además implementé <strong>lazy loading</strong> nativo en todas las imágenes below the fold:</p>
+      <pre><code>&lt;img src="producto.webp" loading="lazy" alt="Producto"/&gt;</code></pre>
+      <h2>3. Minificación de CSS y JS</h2>
+      <p>Usé <code>Vite</code> para el build de producción, que automáticamente minifica y hace tree-shaking. El JS pasó de <strong>420KB</strong> a <strong>87KB</strong>.</p>
+      <h2>4. Caché del navegador</h2>
+      <p>Configuré headers de caché en el servidor para que los recursos estáticos se guarden en el navegador del usuario. La segunda visita es prácticamente instantánea.</p>
+      <pre><code>Cache-Control: public, max-age=31536000, immutable</code></pre>
+      <blockquote>El rendimiento no es un feature, es un requisito. Un segundo de retraso puede costar hasta 7% de conversiones en e-commerce.</blockquote>
+      <h2>Resultado final</h2>
+      <p>Con todos estos cambios aplicados, el score de Lighthouse pasó de <strong>42 a 91</strong> en móvil. El tiempo de carga de 8.4s a 4.6s. Y el cliente reportó un aumento del <strong>23% en conversiones</strong> el mes siguiente.</p>
+      <div class="divider"></div>
+      <p>Si tienes preguntas sobre cómo aplicar estas técnicas en tu proyecto, escríbeme. Estoy siempre disponible para hablar de código.</p>
+    `
+  },
+  {
+    id: 2,
+    title: 'JavaScript: los 5 errores que todo junior comete',
+    titleHighlight: '5 errores',
+    excerpt: 'De la experiencia construyendo más de 10 proyectos: estos son los errores más comunes y cómo evitarlos.',
+    category: 'javascript',
+    date: '28 Feb 2025',
+    readTime: '5 min',
+    featured: false,
+    tags: ['javascript', 'buenas prácticas', 'junior', 'tips'],
+    body: `
+      <p>Después de revisar código ajeno en varios proyectos freelance, siempre encuentro los mismos patrones de error. Aquí van los <strong>5 más frecuentes</strong> y cómo corregirlos.</p>
+      <h2>1. Usar var en lugar de const/let</h2>
+      <p><code>var</code> tiene scope de función y hace hoisting, lo que genera bugs difíciles de detectar. Usa siempre <code>const</code> por defecto, y <code>let</code> solo cuando necesites reasignar.</p>
+      <pre><code>// ❌ Mal
+var usuario = 'Santiago';
+// ✅ Bien
+const usuario = 'Santiago';</code></pre>
+      <h2>2. No manejar errores en async/await</h2>
+      <p>El error más peligroso: hacer llamadas a APIs sin try/catch. Si falla la red, tu app se rompe silenciosamente.</p>
+      <pre><code>// ❌ Sin manejo de errores
+const data = await fetch('/api/datos').then(r => r.json());
+
+// ✅ Con try/catch
+try {
+  const res = await fetch('/api/datos');
+  if (!res.ok) throw new Error('Error ' + res.status);
+  const data = await res.json();
+} catch (err) {
+  console.error('Falló la petición:', err);
+}</code></pre>
+      <h2>3. Comparar con == en lugar de ===</h2>
+      <p>El operador <code>==</code> hace coerción de tipos y puede dar resultados inesperados. Siempre usa <code>===</code>.</p>
+      <pre><code>0 == false   // true  ← peligroso
+0 === false  // false ← correcto</code></pre>
+      <h2>4. Mutar el estado directamente en React</h2>
+      <p>Esto causa que React no detecte los cambios y el componente no se re-renderice.</p>
+      <pre><code>// ❌ Mutación directa
+state.items.push(nuevoItem);
+
+// ✅ Nuevo array
+setItems([...items, nuevoItem]);</code></pre>
+      <h2>5. Olvidar limpiar event listeners</h2>
+      <p>Si agregas listeners dentro de componentes sin removerlos, acumulas memoria y causas comportamientos raros.</p>
+      <pre><code>useEffect(() => {
+  window.addEventListener('resize', handleResize);
+  return () => window.removeEventListener('resize', handleResize);
+}, []);</code></pre>
+      <blockquote>El buen código no es el que funciona, es el que otro desarrollador puede entender y mantener.</blockquote>
+    `
+  },
+  {
+    id: 3,
+    title: 'CSS Grid vs Flexbox: cuándo usar cada uno',
+    titleHighlight: 'cuándo usar',
+    excerpt: 'La pregunta más frecuente en entrevistas frontend. Te explico con ejemplos reales cuál elegir en cada situación.',
+    category: 'css',
+    date: '15 Feb 2025',
+    readTime: '6 min',
+    featured: false,
+    tags: ['css', 'grid', 'flexbox', 'frontend', 'layout'],
+    body: `
+      <p>Esta es sin duda la pregunta más común en entrevistas de frontend junior. Y la respuesta honesta es: <strong>depende</strong>. Pero hay reglas claras que te ayudan a decidir.</p>
+      <h2>Flexbox: para una dimensión</h2>
+      <p>Flexbox es ideal cuando organizas elementos en <strong>una sola dirección</strong> (horizontal o vertical).</p>
+      <pre><code>/* Navbar con items alineados */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Centrar un elemento */
+.contenedor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}</code></pre>
+      <h2>Grid: para dos dimensiones</h2>
+      <p>CSS Grid brilla cuando necesitas controlar <strong>filas y columnas al mismo tiempo</strong>.</p>
+      <pre><code>/* Layout de página completa */
+.app {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: 60px 1fr 40px;
+  min-height: 100vh;
+}
+
+/* Grid responsivo sin media queries */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}</code></pre>
+      <h2>La regla de oro</h2>
+      <ul>
+        <li><strong>¿Barra de navegación, botones en línea, centrar un elemento?</strong> → Flexbox</li>
+        <li><strong>¿Layout de página, galería de tarjetas, dashboard?</strong> → Grid</li>
+        <li><strong>¿No sabes cuántos elementos habrá?</strong> → Grid con auto-fill</li>
+      </ul>
+      <blockquote>No elijas entre Grid y Flexbox: úsalos juntos. Grid para el macro-layout, Flexbox para los componentes internos.</blockquote>
+      <h2>Truco pro: Grid para centrar</h2>
+      <pre><code>/* La forma más corta de centrar todo */
+.contenedor {
+  display: grid;
+  place-items: center;
+}</code></pre>
+      <p>Este snippet de 3 líneas te va a ahorrar horas de luchar con <code>margin: auto</code>.</p>
+    `
+  },
+  {
+    id: 4,
+    title: 'Mi experiencia como desarrollador freelance: 3 años después',
+    titleHighlight: '3 años',
+    excerpt: 'Lo que nadie te dice sobre trabajar solo: clientes difíciles, ingresos irregulares y las lecciones más valiosas.',
+    category: 'carrera',
+    date: '1 Feb 2025',
+    readTime: '8 min',
+    featured: false,
+    tags: ['freelance', 'carrera', 'experiencia', 'dinero'],
+    body: `
+      <p>En 2022 empecé a desarrollar sitios web por mi cuenta. Sin experiencia laboral formal, sin red de contactos, con solo ganas y conocimientos básicos. Hoy, <strong>más de 10 proyectos después</strong>, puedo contarte lo que aprendí.</p>
+      <h2>El primer cliente: el más difícil</h2>
+      <p>Conseguir el primer cliente sin portafolio es un círculo vicioso: necesitas proyectos para conseguir clientes, pero necesitas clientes para tener proyectos. Mi solución: <strong>hacer 2 proyectos gratis</strong> para negocios locales a cambio de testimonios y permiso de usar el trabajo en mi portafolio.</p>
+      <h2>El error más caro que cometí</h2>
+      <p>Dar presupuestos sin especificaciones claras. Un cliente me pidió "un sitio web sencillo" y terminé haciendo un sistema de gestión de inventario completo por el precio de una landing page. Hoy siempre firmo un contrato con alcance definido.</p>
+      <blockquote>Si no está en el contrato, no existe. No importa lo que dijeron en la llamada.</blockquote>
+      <h2>Cómo cobrar sin sentirte mal</h2>
+      <p>El síndrome del impostor te hace cobrar menos de lo que vales. Mi fórmula actual:</p>
+      <ul>
+        <li>Estima las horas reales que tomará el proyecto</li>
+        <li>Multiplica por tu tarifa hora deseada</li>
+        <li>Añade 30% de buffer para imprevistos</li>
+        <li>Divide en 50% anticipo, 50% al entregar</li>
+      </ul>
+      <h2>Los logros que más me enorgullecen</h2>
+      <p>Más allá del dinero, lo que me hace sentir orgulloso es el impacto real: un cliente aumentó su tráfico orgánico un <strong>60%</strong> en 3 meses. Otro redujo el tiempo que tardaba en gestionar su inventario de 2 horas a 15 minutos diarios.</p>
+      <p>Eso es lo que hace que valga la pena.</p>
+    `
+  },
+  {
+    id: 5,
+    title: 'Python para web developers: lo que necesitas saber',
+    titleHighlight: 'lo que necesitas',
+    excerpt: 'Python no es solo para data science. Como web developer, aquí están los casos de uso más prácticos que uso en mis proyectos.',
+    category: 'python',
+    date: '20 Ene 2025',
+    readTime: '6 min',
+    featured: false,
+    tags: ['python', 'backend', 'automatización', 'scripts'],
+    body: `
+      <p>Muchos web developers ven Python como "el lenguaje de los científicos de datos". Pero en mi día a día como freelance, Python me ha ahorrado <strong>decenas de horas</strong> con scripts simples y poderosos.</p>
+      <h2>1. Automatizar tareas repetitivas</h2>
+      <p>¿Tienes que renombrar 500 archivos? ¿Convertir imágenes? ¿Leer un Excel y generar un reporte? Python lo hace en 20 líneas.</p>
+      <pre><code>import os
+from PIL import Image
+
+# Convertir todas las JPG a WebP en una carpeta
+for file in os.listdir('./imagenes'):
+    if file.endswith('.jpg'):
+        img = Image.open(f'./imagenes/{file}')
+        img.save(f'./output/{file[:-4]}.webp', 'WebP', quality=80)
+        print(f'Convertido: {file}')</code></pre>
+      <h2>2. Web scraping para obtener datos</h2>
+      <p>Con <code>BeautifulSoup</code> y <code>requests</code> puedes extraer datos de cualquier sitio web. Útil para hacer comparativas de precios, monitorear competencia, etc.</p>
+      <pre><code>import requests
+from bs4 import BeautifulSoup
+
+res = requests.get('https://ejemplo.com/productos')
+soup = BeautifulSoup(res.text, 'html.parser')
+precios = soup.find_all(class_='precio')
+for p in precios:
+    print(p.text)</code></pre>
+      <h2>3. APIs con FastAPI</h2>
+      <p>Si necesitas crear una API rápida para tu frontend, <strong>FastAPI</strong> es increíblemente sencillo y tiene validación automática.</p>
+      <pre><code>from fastapi import FastAPI
+app = FastAPI()
+
+@app.get('/api/usuarios/{id}')
+def get_usuario(id: int):
+    return {'id': id, 'nombre': 'Santiago'}</code></pre>
+      <blockquote>No necesitas dominar Python a nivel senior. Con el 20% del lenguaje puedes resolver el 80% de los problemas de automatización.</blockquote>
+      <h2>Mi setup recomendado</h2>
+      <ul>
+        <li><strong>requests</strong> → HTTP calls</li>
+        <li><strong>Pillow</strong> → procesamiento de imágenes</li>
+        <li><strong>pandas</strong> → manipulación de datos</li>
+        <li><strong>FastAPI</strong> → crear APIs rápido</li>
+      </ul>
+    `
+  },
+  {
+    id: 6,
+    title: 'Cómo estructurar un proyecto React desde cero',
+    titleHighlight: 'desde cero',
+    excerpt: 'La estructura de carpetas y decisiones de arquitectura que uso en todos mis proyectos React para mantener el código limpio.',
+    category: 'javascript',
+    date: '10 Ene 2025',
+    readTime: '5 min',
+    featured: false,
+    tags: ['react', 'javascript', 'arquitectura', 'frontend'],
+    body: `
+      <p>Una de las cosas que más confunde a los developers junior es cómo organizar un proyecto React. No hay una respuesta única, pero sí hay patrones probados que evitan el caos a medida que el proyecto crece.</p>
+      <h2>La estructura que uso</h2>
+      <pre><code>src/
+├── components/     # Componentes reutilizables
+│   ├── Button/
+│   │   ├── Button.jsx
+│   │   ├── Button.css
+│   │   └── index.js
+├── pages/          # Vistas completas
+│   ├── Home.jsx
+│   └── About.jsx
+├── hooks/          # Custom hooks
+│   └── useWeather.js
+├── services/       # Llamadas a APIs
+│   └── weatherApi.js
+├── context/        # Estado global
+│   └── AuthContext.jsx
+├── utils/          # Funciones helpers
+│   └── formatDate.js
+└── assets/         # Imágenes, fuentes</code></pre>
+      <h2>Reglas que sigo siempre</h2>
+      <ul>
+        <li><strong>Un componente = una carpeta</strong> con su CSS y su index.js</li>
+        <li><strong>Las páginas no tienen lógica</strong>, solo componen componentes</li>
+        <li><strong>La lógica de API va en services/</strong>, nunca directo en el componente</li>
+        <li><strong>Los custom hooks</strong> son para reusar lógica con estado</li>
+      </ul>
+      <h2>El patrón Container/Presenter</h2>
+      <p>Separa los componentes en dos tipos:</p>
+      <ul>
+        <li><strong>Container:</strong> maneja estado y lógica, no tiene estilos</li>
+        <li><strong>Presenter:</strong> solo recibe props y renderiza, fácil de testear</li>
+      </ul>
+      <blockquote>Si tu componente tiene más de 150 líneas, probablemente debería dividirse en dos. La simplicidad es una feature.</blockquote>
+      <h2>Naming conventions</h2>
+      <pre><code>// Componentes: PascalCase
+ProductCard.jsx
+
+// Hooks: camelCase con "use"
+useProductSearch.js
+
+// Servicios: camelCase con Api
+productsApi.js
+
+// Constantes: SCREAMING_SNAKE_CASE
+const API_URL = 'https://...'</code></pre>
+    `
+  }
+];
+
+// ════════════════════════════════
+//   STATE
+// ════════════════════════════════
+let currentView   = 'home'; // 'home' | 'post'
+let currentPost   = null;
+let currentCat    = 'todos';
+let searchQuery   = '';
+
+const categories = ['todos', 'javascript', 'css', 'rendimiento', 'python', 'carrera'];
+
+// ════════════════════════════════
+//   ROUTER
+// ════════════════════════════════
+function goHome() {
+  currentView = 'home';
+  currentPost = null;
+  document.getElementById('searchInput').value = '';
+  searchQuery = '';
+  render();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function goPost(id) {
+  currentView = 'post';
+  currentPost = posts.find(p => p.id === id);
+  render();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function setCategory(cat) {
+  currentCat = cat;
+  render();
+}
+
+function onSearch(val) {
+  searchQuery = val.toLowerCase().trim();
+  render();
+}
+
+// ════════════════════════════════
+//   RENDER
+// ════════════════════════════════
+function render() {
+  const main = document.getElementById('main');
+  if (currentView === 'home') renderHome(main);
+  else renderPost(main);
+}
+
+function renderHome(el) {
+  const featured = posts.find(p => p.featured);
+
+  let visible = posts.filter(p => {
+    const matchCat = currentCat === 'todos' || p.category === currentCat;
+    const matchSearch = !searchQuery ||
+      p.title.toLowerCase().includes(searchQuery) ||
+      p.excerpt.toLowerCase().includes(searchQuery) ||
+      p.tags.some(t => t.includes(searchQuery));
+    return matchCat && matchSearch;
+  });
+
+  const gridPosts = searchQuery
+    ? visible
+    : visible.filter(p => !p.featured || currentCat !== 'todos');
+
+  el.innerHTML = `
+    <div class="page">
+      <div class="blog-hero">
+        <div class="blog-tag">Blog personal</div>
+        <h1 class="blog-title">Código,<br><span>experiencias</span><br>& tips reales.</h1>
+        <p class="blog-sub">Artículos sobre desarrollo web, JavaScript, CSS, Python y lo que aprendo construyendo proyectos reales.</p>
+      </div>
+
+      <div class="cats-wrap">
+        ${categories.map(c => `
+          <button class="cat-btn ${currentCat===c?'active':''}" onclick="setCategory('${c}')">
+            ${c === 'todos' ? 'Todos' : c}
+          </button>
+        `).join('')}
+      </div>
+
+      ${searchQuery ? '' : (currentCat === 'todos' && featured ? `
+        <div class="featured" onclick="goPost(${featured.id})">
+          <div class="featured-label">✦ Artículo destacado</div>
+          <h2 class="featured-title">${featured.title}</h2>
+          <p class="featured-excerpt">${featured.excerpt}</p>
+          <div class="post-meta">
+            <span class="post-cat ${featured.category}">${featured.category}</span>
+            <span class="post-date">${featured.date}</span>
+            <span class="read-time">📖 ${featured.readTime} de lectura</span>
+          </div>
+        </div>
+      ` : '')}
+
+      ${gridPosts.length === 0 ? `
+        <div class="empty-search">
+          <span>🔍</span>
+          <strong>No hay resultados para "${searchQuery}"</strong><br>
+          Intenta con otro término o explora las categorías
+        </div>
+      ` : `
+        <div class="posts-grid">
+          ${gridPosts.map(p => `
+            <div class="post-card" onclick="goPost(${p.id})">
+              <div class="post-meta">
+                <span class="post-cat ${p.category}">${p.category}</span>
+                <span class="read-time">📖 ${p.readTime}</span>
+              </div>
+              <h3 class="post-card-title">${p.title}</h3>
+              <p class="post-card-excerpt">${p.excerpt}</p>
+              <div class="post-card-footer">
+                <span class="post-date">${p.date}</span>
+                <span style="font-size:0.72rem;color:var(--red)">Leer →</span>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `}
+    </div>
+  `;
+}
+
+function renderPost(el) {
+  const p = currentPost;
+  const related = posts.filter(r => r.id !== p.id && (r.category === p.category || r.tags.some(t => p.tags.includes(t)))).slice(0, 3);
+
+  el.innerHTML = `
+    <div class="page narrow">
+      <button class="back-btn" onclick="goHome()"> Volver al blog</button>
+      <div class="post-header">
+        <div class="post-meta">
+          <span class="post-cat ${p.category}">${p.category}</span>
+          <span class="post-date">${p.date}</span>
+          <span class="read-time">📖 ${p.readTime} de lectura</span>
+        </div>
+        <h1 class="post-header-title">${p.title}</h1>
+        <p class="post-lead">${p.excerpt}</p>
+      </div>
+
+      <div class="post-body">${p.body}</div>
+
+      <div class="post-tags">
+        ${p.tags.map(t => `<span class="ptag">#${t}</span>`).join('')}
+      </div>
+
+      ${related.length ? `
+        <div class="related-title">También te puede interesar</div>
+        <div class="related-grid">
+          ${related.map(r => `
+            <div class="related-card" onclick="goPost(${r.id})">
+              <h4>${r.title}</h4>
+              <p>${r.date} · ${r.readTime}</p>
+            </div>
+          `).join('')}
+        </div>
+      ` : ''}
+    </div>
+  `;
+}
+
+// INIT
+render();
+</script>
+</body>
+</html>
