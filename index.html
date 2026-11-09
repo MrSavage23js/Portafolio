@@ -357,6 +357,7 @@
 
     .skills-label {
       font-family: var(--mono);
+      font-weight: 400;
       font-size: 0.7rem;
       color: var(--muted);
       letter-spacing: 0.15em;
@@ -368,6 +369,22 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.6rem
+    }
+
+    .skill-group+.skill-group {
+      margin-top: 1.4rem
+    }
+
+    .skill-cat {
+      font-family: var(--head);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.6rem
+    }
+
+    .skills-wrap {
+      list-style: none
     }
 
     .sk {
@@ -855,32 +872,52 @@
         <p>Me apasiona construir experiencias digitales eficientes, intuitivas y visualmente atractivas — combinando una
           <strong>sólida base técnica</strong> con enfoque en el usuario y el rendimiento.
         </p>
+        <!-- CONFIRMAR: ¿puedes respaldar "+10 proyectos reales"? -->
         <p>He completado <span class="stat">+10</span> proyectos reales: desde sitios responsivos hasta sistemas de
           gestión con bases de datos y tiendas online con pasarelas de pago.</p>
+        <!-- CONFIRMAR: ¿puedes respaldar "45% menos de carga" y "60% más de tráfico orgánico"? -->
         <p>Reducción de tiempos de carga hasta un <span class="stat">45%</span> y mejora del tráfico orgánico de
           clientes hasta un <span class="stat">60%</span> con buenas prácticas de SEO y UX.</p>
         <p>Actualmente cursando <strong>Ingeniería en Sistemas Computacionales</strong> en Universidad ICEL. Inglés
           intermedio · Español nativo.</p>
       </div>
       <div>
-        <p class="skills-label">Stack tecnológico</p>
-        <div class="skills-wrap">
-          <span class="sk">HTML5</span>
-          <span class="sk">CSS3</span>
-          <span class="sk">JavaScript ES6+</span>
-          <span class="sk">React</span>
-          <span class="sk">Node.js</span>
-          <span class="sk">Express</span>
-          <span class="sk">PHP</span>
-          <span class="sk">Python</span>
-          <span class="sk">MySQL</span>
-          <span class="sk">MongoDB</span>
-          <span class="sk">Firebase</span>
-          <span class="sk">Git / GitHub</span>
-          <span class="sk">Figma</span>
-          <span class="sk">SEO Técnico</span>
-          <span class="sk">Postman</span>
-          <span class="sk">Linux</span>
+        <h3 class="skills-label">Stack tecnológico</h3>
+        <div class="skill-group">
+          <h4 class="skill-cat">Frontend</h4>
+          <ul class="skills-wrap" role="list">
+            <li class="sk">HTML5</li>
+            <li class="sk">CSS3</li>
+            <li class="sk">JavaScript ES6+</li>
+            <li class="sk">React</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4 class="skill-cat">Backend</h4>
+          <ul class="skills-wrap" role="list">
+            <li class="sk">Node.js</li>
+            <li class="sk">Express</li>
+            <li class="sk">PHP</li>
+            <li class="sk">Python</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4 class="skill-cat">Bases de datos</h4>
+          <ul class="skills-wrap" role="list">
+            <li class="sk">MySQL</li>
+            <li class="sk">MongoDB</li>
+            <li class="sk">Firebase</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4 class="skill-cat">Herramientas</h4>
+          <ul class="skills-wrap" role="list">
+            <li class="sk">Git / GitHub</li>
+            <li class="sk">Postman</li>
+            <li class="sk">Figma</li>
+            <li class="sk">Linux</li>
+            <li class="sk">SEO Técnico</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -1016,6 +1053,7 @@
           <li>Sistemas de gestión de ventas e inventario con conexión a bases de datos</li>
           <li>Integración de pasarelas de pago y autenticación de usuarios</li>
           <li>Optimización de rendimiento web y posicionamiento SEO técnico</li>
+          <!-- CONFIRMAR: métricas 45% / 60% / +10 (ver también Sobre mí) -->
           <li>Reducción de tiempos de carga hasta un 45% <span class="exp-badge">⚡ logro</span></li>
           <li>Mejora del tráfico orgánico de clientes hasta un 60% <span class="exp-badge">📈 logro</span></li>
           <li>+10 proyectos completos entregados <span class="exp-badge">✅ logro</span></li>
