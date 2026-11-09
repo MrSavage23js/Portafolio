@@ -1458,9 +1458,9 @@
           </div>
           <dl class="case-info">
             <dt>Problema</dt>
-            <dd>El registro de producción se llevaba en un archivo de Excel <span class="todo">[COMPLETAR: detalle: compartido, uno por turno…]</span>, lo que complicaba la captura simultánea y la consistencia de los datos.</dd>
+            <dd>El control de pesos de producción se llevaba en un archivo de Excel <span class="todo">[COMPLETAR: detalle: compartido, uno por turno…]</span>, lo que complicaba la captura simultánea y la consistencia de los datos.</dd>
             <dt>Solución</dt>
-            <dd>Aplicación web que reemplaza el Excel: varios usuarios capturan al mismo tiempo y la información se puede exportar a Excel cuando se necesita.</dd>
+            <dd>Aplicación web que digitaliza el control de pesos y reemplaza el Excel: varios usuarios capturan al mismo tiempo y la información se puede exportar a Excel cuando se necesita.</dd>
             <dt>Stack</dt>
             <dd><span class="todo">[COMPLETAR: tecnologías usadas]</span></dd>
             <dt>Mi rol</dt>
@@ -1473,10 +1473,10 @@
           <div class="mock-bar" aria-hidden="true"><i></i><i></i><i></i><span>captura · producción</span></div>
           <div class="mock-body" aria-hidden="true">
             <div class="mock-grid">
-              <span class="h">Línea</span><span class="h">Turno</span><span class="h">Piezas</span><span class="h">Usuario</span>
-              <span>Línea A</span><span>Matutino</span><span>320</span><span>usuario1</span>
-              <span>Línea B</span><span>Matutino</span><span>275</span><span>usuario2</span>
-              <span>Línea A</span><span>Vespertino</span><span>298</span><span>usuario3</span>
+              <span class="h">Línea</span><span class="h">Turno</span><span class="h">Peso (kg)</span><span class="h">Usuario</span>
+              <span>Línea A</span><span>Matutino</span><span>320.5</span><span>usuario1</span>
+              <span>Línea B</span><span>Matutino</span><span>275.0</span><span>usuario2</span>
+              <span>Línea A</span><span>Vespertino</span><span>298.2</span><span>usuario3</span>
             </div>
             <span class="mock-btn">+ Nuevo registro</span> <span class="mock-btn ghost">Exportar a Excel</span>
           </div>
@@ -1494,7 +1494,7 @@
             <dt>Problema</dt>
             <dd>Revisar los reportes de ventas <span class="todo">[COMPLETAR: formato y frecuencia del reporte]</span> requería trabajo manual para obtener la información relevante.</dd>
             <dt>Solución</dt>
-            <dd>Herramienta web: el usuario sube el reporte, el sistema lo procesa y muestra la información <span class="todo">[COMPLETAR: qué muestra: totales, tablas, gráficas…]</span>.</dd>
+            <dd>Herramienta web: el usuario sube el reporte, el sistema lo procesa, lo cruza con el catálogo de productos y muestra la información <span class="todo">[COMPLETAR: qué muestra: totales, tablas, gráficas…]</span>.</dd>
             <dt>Stack</dt>
             <dd><span class="todo">[COMPLETAR: tecnologías usadas]</span></dd>
             <dt>Mi rol</dt>
@@ -1636,12 +1636,10 @@
       <div class="exp-date">Ago 2026 — Actualidad</div>
       <div>
         <h3 class="exp-role">Auxiliar de Sistemas y TI <span class="exp-badge">Puesto actual</span></h3>
-        <!-- Nombre de la empresa omitido a propósito. COMPLETAR: sector/industria si quieres mostrarlo -->
-        <p class="exp-place">Empresa del sector [COMPLETAR: industria] · México</p>
+        <p class="exp-place">Grupo Aramo · México</p>
         <ul class="exp-list">
           <li>Desarrollo de sistemas web internos para distintas áreas de la empresa (ver <a href="#casos" class="inline-link">casos de estudio</a>)</li>
-          <li>Soporte técnico a usuarios y equipos [COMPLETAR: p. ej. hardware, redes, cuentas, impresoras]</li>
-          <li>[COMPLETAR: otra responsabilidad relevante, si aplica]</li>
+          <li>Soporte técnico a usuarios e infraestructura: servidores, red y licencias de software</li>
         </ul>
       </div>
     </div>
@@ -1741,7 +1739,6 @@
         Si tienes un proyecto o una oportunidad, escríbeme — respondo rápido.
       </p>
       <div class="socials">
-        <!-- CONFIRMAR: correo único para todo el sitio y el CV -->
         <a href="mailto:savage21ggl@gmail.com" class="soc">✉️ savage21ggl@gmail.com</a>
         <a href="https://github.com/MrSavage23js" target="_blank" rel="noopener" class="soc">🐙 MrSavage23js</a>
       </div>
