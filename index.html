@@ -569,6 +569,323 @@
       transform: translateY(-1px)
     }
 
+    .sub-title {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.6rem
+    }
+
+    .sub-title .count {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: var(--muted)
+    }
+
+    .sub-desc {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 640px;
+      margin-bottom: 1.8rem
+    }
+
+    .proj-block+.proj-block {
+      margin-top: 4.5rem
+    }
+
+    /* CASE STUDIES */
+    .case {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+      gap: 2.2rem;
+      padding: 1.8rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: border-color 0.3s
+    }
+
+    .case:hover {
+      border-color: rgba(255, 32, 32, 0.5)
+    }
+
+    .case+.case {
+      margin-top: 1.5rem
+    }
+
+    .case-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1.2rem
+    }
+
+    .case-head .card-num {
+      margin: 0;
+      width: 100%
+    }
+
+    .case-name {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2
+    }
+
+    .status {
+      padding: 0.22rem 0.6rem;
+      border-radius: 20px;
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase
+    }
+
+    .st-dev {
+      background: rgba(255, 204, 0, 0.1);
+      color: var(--gold);
+      border: 1px solid rgba(255, 204, 0, 0.3)
+    }
+
+    .st-todo {
+      background: var(--surface2);
+      color: var(--muted);
+      border: 1px dashed var(--muted)
+    }
+
+    .case-info {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 0.75rem 1rem
+    }
+
+    .case-info dt {
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      color: var(--red2);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding-top: 0.2rem
+    }
+
+    .case-info dd {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      line-height: 1.65;
+      color: var(--muted)
+    }
+
+    .todo {
+      background: rgba(255, 204, 0, 0.08);
+      color: var(--gold);
+      border: 1px dashed rgba(255, 204, 0, 0.45);
+      border-radius: 2px;
+      padding: 0 0.3rem
+    }
+
+    /* mockups (datos ficticios) */
+    .mock {
+      align-self: start;
+      background: #0c0c0c;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--muted)
+    }
+
+    .mock-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.55rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface2)
+    }
+
+    .mock-bar i {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border)
+    }
+
+    .mock-bar span {
+      margin-left: auto;
+      font-size: 0.6rem;
+      letter-spacing: 0.08em
+    }
+
+    .mock-body {
+      padding: 0.9rem
+    }
+
+    .mock-kpis {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      margin-bottom: 0.8rem
+    }
+
+    .mock-kpis div {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.5rem
+    }
+
+    .mock-kpis b {
+      display: block;
+      font-family: var(--head);
+      font-size: 1rem;
+      color: var(--text)
+    }
+
+    .mock-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.45rem 0;
+      border-top: 1px solid #1f1414
+    }
+
+    .mock-row .grow {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap
+    }
+
+    .mock-row b {
+      color: var(--text);
+      font-weight: 500
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex: none
+    }
+
+    .u-high {
+      background: #ff4d4d
+    }
+
+    .u-med {
+      background: var(--gold)
+    }
+
+    .u-low {
+      background: #5de87a
+    }
+
+    .mock-pill {
+      padding: 0.1rem 0.45rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      font-size: 0.58rem
+    }
+
+    .mock-btn {
+      display: inline-block;
+      margin-top: 0.8rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 3px;
+      background: var(--red);
+      color: #080808;
+      font-weight: 500
+    }
+
+    .mock-btn.ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border)
+    }
+
+    .mock-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1.2fr 0.8fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border)
+    }
+
+    .mock-grid span {
+      background: #0c0c0c;
+      padding: 0.4rem 0.45rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis
+    }
+
+    .mock-grid .h {
+      background: var(--surface2);
+      color: var(--text)
+    }
+
+    .mock-drop {
+      border: 1px dashed var(--muted);
+      border-radius: 4px;
+      padding: 0.7rem;
+      text-align: center;
+      margin-bottom: 0.9rem
+    }
+
+    .mock-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 0.4rem;
+      height: 70px;
+      padding-top: 0.4rem
+    }
+
+    .mock-bars div {
+      flex: 1;
+      background: linear-gradient(to top, var(--red), var(--red2));
+      border-radius: 2px 2px 0 0;
+      opacity: 0.85
+    }
+
+    .mock-note {
+      padding: 0.45rem 0.9rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.58rem;
+      letter-spacing: 0.06em
+    }
+
+    /* featured project */
+    .card-feature {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr
+    }
+
+    .card-feature .card-banner {
+      height: 100%;
+      min-height: 260px
+    }
+
+    .card-feature .card-banner::after {
+      background: linear-gradient(to right, transparent 60%, var(--surface) 100%)
+    }
+
+    .card-feature .card-body {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center
+    }
+
     /* EXPERIENCE */
     .exp-item {
       display: grid;
@@ -759,6 +1076,26 @@
       color: var(--muted)
     }
 
+    @media(max-width:900px) {
+      .case {
+        grid-template-columns: 1fr;
+        gap: 1.5rem
+      }
+
+      .card-feature {
+        grid-template-columns: 1fr
+      }
+
+      .card-feature .card-banner {
+        height: 220px;
+        min-height: 0
+      }
+
+      .card-feature .card-banner::after {
+        background: linear-gradient(to bottom, transparent 30%, var(--surface) 100%)
+      }
+    }
+
     /* RESPONSIVE */
     @media(max-width:768px) {
       nav {
@@ -805,6 +1142,19 @@
       .about-grid {
         grid-template-columns: 1fr;
         gap: 2.5rem
+      }
+
+      .case-info {
+        grid-template-columns: 1fr;
+        gap: 0.2rem
+      }
+
+      .case-info dd {
+        margin-bottom: 0.6rem
+      }
+
+      .case {
+        padding: 1.2rem
       }
 
       .exp-item {
@@ -936,98 +1286,157 @@
   <section class="section" id="proyectos">
     <p class="chip">02 — Proyectos</p>
     <h2 class="sec-title">Lo que he construido</h2>
-    <div class="projects-grid">
+    <!-- CASOS DE ESTUDIO: textos en borrador. Reemplaza cada [COMPLETAR] con datos reales. -->
+    <div class="proj-block" id="casos">
+      <h3 class="sub-title">Casos de estudio <span class="count">sistemas internos</span></h3>
+      <p class="sub-desc">Sistemas que desarrollo en mi puesto actual. Por confidencialidad no muestro capturas, nombres ni
+        datos reales: las vistas son ilustrativas y usan datos ficticios.</p>
+      <article class="case" aria-labelledby="case-tickets">
+        <div>
+          <div class="case-head">
+            <p class="card-num">Caso 01 / 04</p>
+            <h4 class="case-name" id="case-tickets">Sistema de tickets de soporte interno</h4>
+            <span class="status st-dev">En desarrollo</span>
+          </div>
+          <dl class="case-info">
+            <dt>Problema</dt>
+            <dd>Las solicitudes de soporte llegaban por <span class="todo">[COMPLETAR: canal: correo, mensajes, en persona…]</span> sin folio, prioridad ni seguimiento centralizado.</dd>
+            <dt>Solución</dt>
+            <dd>Aplicación web donde cada solicitud recibe un folio único por departamento y año, se clasifica por nivel de urgencia con código de color y dispara notificaciones por correo (SMTP). Los administradores cuentan con un dashboard para dar seguimiento.</dd>
+            <dt>Stack</dt>
+            <dd><span class="todo">[COMPLETAR: tecnologías usadas]</span></dd>
+            <dt>Mi rol</dt>
+            <dd><span class="todo">[COMPLETAR: p. ej. análisis, diseño de BD, frontend y backend]</span></dd>
+            <dt>Resultado</dt>
+            <dd>Proyecto en desarrollo. <span class="todo">[COMPLETAR: resultado verificable cuando exista]</span></dd>
+          </dl>
+        </div>
+        <div class="mock" role="img" aria-label="Vista ilustrativa con datos ficticios: dashboard de tickets con folios y urgencias por color">
+          <div class="mock-bar" aria-hidden="true"><i></i><i></i><i></i><span>dashboard · admin</span></div>
+          <div class="mock-body" aria-hidden="true">
+            <div class="mock-kpis">
+              <div>Abiertos<b>12</b></div>
+              <div>En proceso<b>5</b></div>
+              <div>Cerrados<b>48</b></div>
+            </div>
+            <div class="mock-row"><span class="dot u-high"></span><b>SIS-2026-0042</b><span class="grow">Equipo no enciende</span><span class="mock-pill">Alta</span></div>
+            <div class="mock-row"><span class="dot u-med"></span><b>ADM-2026-0017</b><span class="grow">Acceso a carpeta compartida</span><span class="mock-pill">Media</span></div>
+            <div class="mock-row"><span class="dot u-low"></span><b>VEN-2026-0008</b><span class="grow">Instalar software de oficina</span><span class="mock-pill">Baja</span></div>
+          </div>
+          <p class="mock-note" aria-hidden="true">Datos ficticios · vista ilustrativa</p>
+        </div>
+      </article>
+      <article class="case" aria-labelledby="case-fichas">
+        <div>
+          <div class="case-head">
+            <p class="card-num">Caso 02 / 04</p>
+            <h4 class="case-name" id="case-fichas">Sistema multiempresa de fichas técnicas</h4>
+            <span class="status st-dev">En desarrollo</span>
+          </div>
+          <dl class="case-info">
+            <dt>Problema</dt>
+            <dd>Las fichas técnicas de producto de varias empresas se manejaban en <span class="todo">[COMPLETAR: formato actual: Word, Excel, archivos sueltos…]</span>, sin control de versiones ni permisos por usuario.</dd>
+            <dt>Solución</dt>
+            <dd>Plataforma multiempresa sobre una base de datos relacional, con roles de usuario, versionado de fichas con historial de cambios y generación de la ficha en PDF.</dd>
+            <dt>Stack</dt>
+            <dd><span class="todo">[COMPLETAR: tecnologías usadas]</span></dd>
+            <dt>Mi rol</dt>
+            <dd><span class="todo">[COMPLETAR: tu rol en el proyecto]</span></dd>
+            <dt>Resultado</dt>
+            <dd>Proyecto en desarrollo. <span class="todo">[COMPLETAR: resultado verificable cuando exista]</span></dd>
+          </dl>
+        </div>
+        <div class="mock" role="img" aria-label="Vista ilustrativa con datos ficticios: ficha técnica con historial de versiones y botón para generar PDF">
+          <div class="mock-bar" aria-hidden="true"><i></i><i></i><i></i><span>Empresa Demo · fichas</span></div>
+          <div class="mock-body" aria-hidden="true">
+            <div class="mock-row" style="border-top:0"><b class="grow">Producto Demo A</b><span class="mock-pill">v3 · vigente</span></div>
+            <div class="mock-row"><span class="grow">v3 · Actualiza especificaciones</span><span>editor</span></div>
+            <div class="mock-row"><span class="grow">v2 · Corrige empaque</span><span>admin</span></div>
+            <div class="mock-row"><span class="grow">v1 · Versión inicial</span><span>admin</span></div>
+            <span class="mock-btn">Generar PDF</span> <span class="mock-btn ghost">Ver historial</span>
+          </div>
+          <p class="mock-note" aria-hidden="true">Datos ficticios · vista ilustrativa</p>
+        </div>
+      </article>
+      <article class="case" aria-labelledby="case-produccion">
+        <div>
+          <div class="case-head">
+            <p class="card-num">Caso 03 / 04</p>
+            <h4 class="case-name" id="case-produccion">App web de control de producción</h4>
+            <span class="status st-todo">Estado: [COMPLETAR]</span>
+          </div>
+          <dl class="case-info">
+            <dt>Problema</dt>
+            <dd>El registro de producción se llevaba en un archivo de Excel <span class="todo">[COMPLETAR: detalle: compartido, uno por turno…]</span>, lo que complicaba la captura simultánea y la consistencia de los datos.</dd>
+            <dt>Solución</dt>
+            <dd>Aplicación web que reemplaza el Excel: varios usuarios capturan al mismo tiempo y la información se puede exportar a Excel cuando se necesita.</dd>
+            <dt>Stack</dt>
+            <dd><span class="todo">[COMPLETAR: tecnologías usadas]</span></dd>
+            <dt>Mi rol</dt>
+            <dd><span class="todo">[COMPLETAR: tu rol en el proyecto]</span></dd>
+            <dt>Resultado</dt>
+            <dd><span class="todo">[COMPLETAR: resultado verificable, sin métricas no comprobables]</span></dd>
+          </dl>
+        </div>
+        <div class="mock" role="img" aria-label="Vista ilustrativa con datos ficticios: tabla de captura de producción con botón de exportar a Excel">
+          <div class="mock-bar" aria-hidden="true"><i></i><i></i><i></i><span>captura · producción</span></div>
+          <div class="mock-body" aria-hidden="true">
+            <div class="mock-grid">
+              <span class="h">Línea</span><span class="h">Turno</span><span class="h">Piezas</span><span class="h">Usuario</span>
+              <span>Línea A</span><span>Matutino</span><span>320</span><span>usuario1</span>
+              <span>Línea B</span><span>Matutino</span><span>275</span><span>usuario2</span>
+              <span>Línea A</span><span>Vespertino</span><span>298</span><span>usuario3</span>
+            </div>
+            <span class="mock-btn">+ Nuevo registro</span> <span class="mock-btn ghost">Exportar a Excel</span>
+          </div>
+          <p class="mock-note" aria-hidden="true">Datos ficticios · vista ilustrativa</p>
+        </div>
+      </article>
+      <article class="case" aria-labelledby="case-reportes">
+        <div>
+          <div class="case-head">
+            <p class="card-num">Caso 04 / 04</p>
+            <h4 class="case-name" id="case-reportes">Procesador de reportes de ventas</h4>
+            <span class="status st-todo">Estado: [COMPLETAR]</span>
+          </div>
+          <dl class="case-info">
+            <dt>Problema</dt>
+            <dd>Revisar los reportes de ventas <span class="todo">[COMPLETAR: formato y frecuencia del reporte]</span> requería trabajo manual para obtener la información relevante.</dd>
+            <dt>Solución</dt>
+            <dd>Herramienta web: el usuario sube el reporte, el sistema lo procesa y muestra la información <span class="todo">[COMPLETAR: qué muestra: totales, tablas, gráficas…]</span>.</dd>
+            <dt>Stack</dt>
+            <dd><span class="todo">[COMPLETAR: tecnologías usadas]</span></dd>
+            <dt>Mi rol</dt>
+            <dd><span class="todo">[COMPLETAR: tu rol en el proyecto]</span></dd>
+            <dt>Resultado</dt>
+            <dd><span class="todo">[COMPLETAR: resultado verificable, sin métricas no comprobables]</span></dd>
+          </dl>
+        </div>
+        <div class="mock" role="img" aria-label="Vista ilustrativa con datos ficticios: carga de un reporte de ventas y gráfica de barras resultante">
+          <div class="mock-bar" aria-hidden="true"><i></i><i></i><i></i><span>reportes · ventas</span></div>
+          <div class="mock-body" aria-hidden="true">
+            <div class="mock-drop">⬆ reporte_ventas_demo.xlsx · procesado</div>
+            <div class="mock-kpis">
+              <div>Registros<b>1,240</b></div>
+              <div>Productos<b>86</b></div>
+              <div>Sucursales<b>4</b></div>
+            </div>
+            <div class="mock-bars"><div style="height:55%"></div><div style="height:80%"></div><div style="height:40%"></div><div style="height:95%"></div><div style="height:65%"></div><div style="height:72%"></div></div>
+          </div>
+          <p class="mock-note" aria-hidden="true">Datos ficticios · vista ilustrativa</p>
+        </div>
+      </article>
+    </div>
 
-      <div class="card">
-        <div class="card-banner">
-          <img src="Media/calculadora.png" alt="Captura de la Calculadora Interactiva" loading="lazy">
-          <span class="badge b-easy">Fácil</span>
-        </div>
-        <div class="card-body">
-          <p class="card-num">01 / 05</p>
-          <h3 class="card-name">Calculadora Interactiva</h3>
-          <p class="card-desc">Calculadora funcional con operaciones básicas y avanzadas. Historial de operaciones y
-            soporte para teclado.</p>
-          <div class="card-tags">
-            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
-          </div>
-          <div class="card-links">
-            <a href="https://mrsavage23js.github.io/Calculadora/" target="_blank" rel="noopener" class="lnk hot">Demo →</a>
-            <a href="https://github.com/MrSavage23js/Calculadora" target="_blank" rel="noopener" class="lnk">GitHub</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-banner">
-          <img src="Media/taskmanager.png" alt="Captura del Task Manager" loading="lazy">
-          <span class="badge b-easy">Fácil</span>
-        </div>
-        <div class="card-body">
-          <p class="card-num">02 / 05</p>
-          <h3 class="card-name">Task Manager</h3>
-          <p class="card-desc">App de gestión de tareas con filtros por estado, prioridades y persistencia con
-            localStorage.</p>
-          <div class="card-tags">
-            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span><span
-              class="tag">localStorage</span>
-          </div>
-          <div class="card-links">
-            <a href="https://mrsavage23js.github.io/task-manager/" target="_blank" rel="noopener" class="lnk hot">Demo →</a>
-            <a href="https://github.com/MrSavage23js/task-manager" target="_blank" rel="noopener" class="lnk">GitHub</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-banner">
-          <img src="Media/appclima.png" alt="Captura de la App del Clima" loading="lazy">
-          <span class="badge b-med">Medio</span>
-        </div>
-        <div class="card-body">
-          <p class="card-num">03 / 05</p>
-          <h3 class="card-name">App del Clima</h3>
-          <p class="card-desc">Consume la API de OpenWeather para mostrar clima actual y pronóstico de 5 días de
-            cualquier ciudad.</p>
-          <div class="card-tags">
-            <span class="tag">JavaScript</span><span class="tag">OpenWeather API</span><span class="tag">Fetch</span>
-          </div>
-          <div class="card-links">
-            <a href="https://mrsavage23js.github.io/APP-Clima/" target="_blank" rel="noopener" class="lnk hot">Demo →</a>
-            <a href="https://github.com/MrSavage23js/APP-Clima" target="_blank" rel="noopener" class="lnk">GitHub</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-banner">
-          <img src="Media/blog.png" alt="Captura del Blog Personal" loading="lazy">
-          <span class="badge b-med">Medio</span>
-        </div>
-        <div class="card-body">
-          <p class="card-num">04 / 05</p>
-          <h3 class="card-name">Blog Personal</h3>
-          <p class="card-desc">Blog tipo SPA con publicaciones, filtrado por categorías, buscador y enrutado propio del lado del
-            cliente. Responsivo.</p>
-          <div class="card-tags">
-            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
-          </div>
-          <div class="card-links">
-            <a href="https://mrsavage23js.github.io/Blog-personal/" target="_blank" rel="noopener" class="lnk hot">Demo →</a>
-            <a href="https://github.com/MrSavage23js/Blog-personal" target="_blank" rel="noopener" class="lnk">GitHub</a>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="card">
+    <div class="proj-block">
+      <h3 class="sub-title">Proyecto destacado</h3>
+      <article class="card card-feature">
         <div class="card-banner">
           <img src="Media/ecommerce.png" alt="Captura de la tienda E-Commerce" loading="lazy">
-          <span class="badge b-hard">Fullstack</span>
+          <span class="badge b-hard">SPA</span>
         </div>
         <div class="card-body">
-          <p class="card-num">05 / 05</p>
-          <h3 class="card-name">E-Commerce App</h3>
+          <h4 class="card-name">E-Commerce App</h4>
           <p class="card-desc">Tienda online tipo SPA: catálogo con filtros por categoría, carrito persistente y flujo de
             checkout simulado, sin frameworks.</p>
           <div class="card-tags">
@@ -1039,8 +1448,90 @@
             <a href="https://github.com/MrSavage23js/ecommerce" target="_blank" rel="noopener" class="lnk">GitHub</a>
           </div>
         </div>
-      </div>
+      </article>
+    </div>
 
+    <div class="proj-block">
+      <h3 class="sub-title">Proyectos de práctica <span class="count">frontend</span></h3>
+      <div class="projects-grid">
+        <article class="card">
+          <div class="card-banner">
+            <img src="Media/appclima.png" alt="Captura de la App del Clima" loading="lazy">
+            <span class="badge b-med">Medio</span>
+          </div>
+          <div class="card-body">
+            <p class="card-num">01 / 04</p>
+            <h4 class="card-name">App del Clima</h4>
+            <p class="card-desc">Consume la API de OpenWeather para mostrar clima actual y pronóstico de 5 días de
+              cualquier ciudad.</p>
+            <div class="card-tags">
+              <span class="tag">JavaScript</span><span class="tag">OpenWeather API</span><span class="tag">Fetch</span>
+            </div>
+            <div class="card-links">
+              <a href="https://mrsavage23js.github.io/APP-Clima/" target="_blank" rel="noopener" class="lnk hot">Demo →</a>
+              <a href="https://github.com/MrSavage23js/APP-Clima" target="_blank" rel="noopener" class="lnk">GitHub</a>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-banner">
+            <img src="Media/blog.png" alt="Captura del Blog Personal" loading="lazy">
+            <span class="badge b-med">Medio</span>
+          </div>
+          <div class="card-body">
+            <p class="card-num">02 / 04</p>
+            <h4 class="card-name">Blog Personal</h4>
+            <p class="card-desc">Blog tipo SPA con publicaciones, filtrado por categorías, buscador y enrutado propio del lado del
+              cliente. Responsivo.</p>
+            <div class="card-tags">
+              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+            </div>
+            <div class="card-links">
+              <a href="https://mrsavage23js.github.io/Blog-personal/" target="_blank" rel="noopener" class="lnk hot">Demo →</a>
+              <a href="https://github.com/MrSavage23js/Blog-personal" target="_blank" rel="noopener" class="lnk">GitHub</a>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-banner">
+            <img src="Media/taskmanager.png" alt="Captura del Task Manager" loading="lazy">
+            <span class="badge b-easy">Fácil</span>
+          </div>
+          <div class="card-body">
+            <p class="card-num">03 / 04</p>
+            <h4 class="card-name">Task Manager</h4>
+            <p class="card-desc">App de gestión de tareas con filtros por estado, prioridades y persistencia con
+              localStorage.</p>
+            <div class="card-tags">
+              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span><span
+                class="tag">localStorage</span>
+            </div>
+            <div class="card-links">
+              <a href="https://mrsavage23js.github.io/task-manager/" target="_blank" rel="noopener" class="lnk hot">Demo →</a>
+              <a href="https://github.com/MrSavage23js/task-manager" target="_blank" rel="noopener" class="lnk">GitHub</a>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-banner">
+            <img src="Media/calculadora.png" alt="Captura de la Calculadora Interactiva" loading="lazy">
+            <span class="badge b-easy">Fácil</span>
+          </div>
+          <div class="card-body">
+            <p class="card-num">04 / 04</p>
+            <h4 class="card-name">Calculadora Interactiva</h4>
+            <p class="card-desc">Calculadora funcional con operaciones básicas y avanzadas. Historial de operaciones y
+              soporte para teclado.</p>
+            <div class="card-tags">
+              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+            </div>
+            <div class="card-links">
+              <a href="https://mrsavage23js.github.io/Calculadora/" target="_blank" rel="noopener" class="lnk hot">Demo →</a>
+              <a href="https://github.com/MrSavage23js/Calculadora" target="_blank" rel="noopener" class="lnk">GitHub</a>
+            </div>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
