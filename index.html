@@ -30,7 +30,7 @@
       --red2: #ff5533;
       --gold: #ffcc00;
       --text: #f0eded;
-      --muted: #907070;
+      --muted: #a58585;
       --head: 'Syne', sans-serif;
       --mono: 'DM Mono', monospace;
     }
@@ -87,6 +87,57 @@
 
     .nav-links a:hover {
       color: var(--text)
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -100px;
+      z-index: 300;
+      padding: 0.6rem 1rem;
+      background: var(--red);
+      color: #080808;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      border-radius: 3px;
+      text-decoration: none
+    }
+
+    .skip-link:focus {
+      top: 1rem
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.5rem 0.8rem;
+      cursor: pointer
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+        animation: none !important
+      }
     }
 
     /* HERO */
@@ -690,8 +741,29 @@
         padding: 1rem 1.5rem
       }
 
+      .nav-toggle {
+        display: inline-block
+      }
+
       .nav-links {
-        display: none
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: rgba(8, 8, 8, 0.97);
+        border-bottom: 1px solid var(--border)
+      }
+
+      .nav-links.open {
+        display: flex
+      }
+
+      .nav-links a {
+        padding: 1rem 1.5rem;
+        font-size: 0.8rem
       }
 
       .hero {
@@ -729,20 +801,28 @@
 
 <body>
 
+  <a href="#contenido" class="skip-link">Saltar al contenido</a>
+
   <!-- NAV -->
-  <nav id="nav">
-    <div class="nav-logo">dev.savage</div>
-    <div class="nav-links">
-      <a href="#sobre">Sobre mí</a>
-      <a href="#proyectos">Proyectos</a>
-      <a href="#experiencia">Experiencia</a>
-      <a href="#contacto">Contacto</a>
-    </div>
-  </nav>
+  <header>
+    <nav id="nav" aria-label="Navegación principal">
+      <a href="#inicio" class="nav-logo" style="text-decoration:none">dev.savage</a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menú</button>
+      <div class="nav-links" id="nav-links">
+        <a href="#sobre">Sobre mí</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#experiencia">Experiencia</a>
+        <a href="#formacion">Formación</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenido">
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg"></div>
+  <section class="hero" id="inicio">
+    <div class="hero-bg" aria-hidden="true"></div>
     <p class="hero-num">Disponible para trabajar · México · 2026</p>
     <h1 class="hero-title">
       Santiago<br>
@@ -760,8 +840,8 @@
         <a href="#contacto" class="btn btn-outline">Contáctame</a>
       </div>
     </div>
-    <div class="hero-scroll">scroll</div>
-    <div class="hero-line"></div>
+    <div class="hero-scroll" aria-hidden="true">scroll</div>
+    <div class="hero-line" aria-hidden="true"></div>
   </section>
 
   <!-- ABOUT -->
@@ -806,7 +886,7 @@
     </div>
   </section>
 
-  <div class="divider"></div>
+  <div class="divider" aria-hidden="true"></div>
 
   <!-- PROJECTS -->
   <section class="section" id="proyectos">
@@ -816,7 +896,7 @@
 
       <div class="card">
         <div class="card-banner">
-          <img src="Media/calculadora.png" alt="Calculadora Interactiva - Screenshot" loading="lazy">
+          <img src="Media/calculadora.png" alt="Captura de la Calculadora Interactiva" loading="lazy">
           <span class="badge b-easy">Fácil</span>
         </div>
         <div class="card-body">
@@ -836,7 +916,7 @@
 
       <div class="card">
         <div class="card-banner">
-          <img src="Media/taskmanager.png" alt="Task Manager - Screenshot" loading="lazy">
+          <img src="Media/taskmanager.png" alt="Captura del Task Manager" loading="lazy">
           <span class="badge b-easy">Fácil</span>
         </div>
         <div class="card-body">
@@ -857,7 +937,7 @@
 
       <div class="card">
         <div class="card-banner">
-          <img src="Media/appclima.png" alt="App del Clima - Screenshot" loading="lazy">
+          <img src="Media/appclima.png" alt="Captura de la App del Clima" loading="lazy">
           <span class="badge b-med">Medio</span>
         </div>
         <div class="card-body">
@@ -877,7 +957,7 @@
 
       <div class="card">
         <div class="card-banner">
-          <img src="Media/blog.png" alt="Blog Personal - Screenshot" loading="lazy">
+          <img src="Media/blog.png" alt="Captura del Blog Personal" loading="lazy">
           <span class="badge b-med">Medio</span>
         </div>
         <div class="card-body">
@@ -898,7 +978,7 @@
 
       <div class="card">
         <div class="card-banner">
-          <img src="Media/ecommerce.png" alt="E-Commerce App - Screenshot" loading="lazy">
+          <img src="Media/ecommerce.png" alt="Captura de la tienda E-Commerce" loading="lazy">
           <span class="badge b-hard">Fullstack</span>
         </div>
         <div class="card-body">
@@ -920,7 +1000,7 @@
     </div>
   </section>
 
-  <div class="divider"></div>
+  <div class="divider" aria-hidden="true"></div>
 
   <!-- EXPERIENCE -->
   <section class="section" id="experiencia">
@@ -944,7 +1024,7 @@
     </div>
   </section>
 
-  <div class="divider"></div>
+  <div class="divider" aria-hidden="true"></div>
 
   <!-- CERTS -->
   <section class="section" id="formacion">
@@ -952,29 +1032,29 @@
     <h2 class="sec-title">Educación y certificados</h2>
     <div class="certs-grid">
       <div class="cert">
-        <div class="cert-ico">🐍</div>
+        <div class="cert-ico" aria-hidden="true">🐍</div>
         <p class="cert-name">Ciencia de Datos con Python</p>
         <p class="cert-plat">Certificación — 2024</p>
       </div>
       <div class="cert">
-        <div class="cert-ico">🎓</div>
+        <div class="cert-ico" aria-hidden="true">🎓</div>
         <p class="cert-name">Ingeniería en Sistemas Computacionales</p>
         <p class="cert-plat">Universidad ICEL — 2025 · Actualidad</p>
       </div>
       <div class="cert">
-        <div class="cert-ico">💻</div>
+        <div class="cert-ico" aria-hidden="true">💻</div>
         <p class="cert-name">Téc. en Ing. Sistemas Computacionales</p>
         <p class="cert-plat">U. Politécnica de Texcoco — 2021–2024</p>
       </div>
       <div class="cert">
-        <div class="cert-ico">🌐</div>
+        <div class="cert-ico" aria-hidden="true">🌐</div>
         <p class="cert-name">Inglés Intermedio</p>
         <p class="cert-plat">Idiomas · Español nativo</p>
       </div>
     </div>
   </section>
 
-  <div class="divider"></div>
+  <div class="divider" aria-hidden="true"></div>
 
   <!-- CONTACT -->
   <section class="section" id="contacto">
@@ -993,6 +1073,8 @@
     </div>
   </section>
 
+  </main>
+
   <!-- FOOTER -->
   <footer>
     <div class="logo">dev.savage</div>
@@ -1003,6 +1085,18 @@
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('solid', window.scrollY > 40);
+    }, { passive: true });
+
+    const toggle = document.getElementById('nav-toggle');
+    const links = document.getElementById('nav-links');
+    const setMenu = (open) => {
+      links.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    };
+    toggle.addEventListener('click', () => setMenu(!links.classList.contains('open')));
+    links.addEventListener('click', (e) => { if (e.target.tagName === 'A') setMenu(false); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && links.classList.contains('open')) { setMenu(false); toggle.focus(); }
     });
   </script>
 </body>
