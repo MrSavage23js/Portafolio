@@ -1204,7 +1204,7 @@
         right: 0;
         flex-direction: column;
         gap: 0;
-        background: rgba(8, 8, 8, 0.97);
+        background: var(--bg);
         border-bottom: 1px solid var(--border)
       }
 
@@ -1768,6 +1768,7 @@
     const links = document.getElementById('nav-links');
     const setMenu = (open) => {
       links.classList.toggle('open', open);
+      nav.classList.toggle('solid', open || window.scrollY > 40);
       toggle.setAttribute('aria-expanded', String(open));
     };
     toggle.addEventListener('click', () => setMenu(!links.classList.contains('open')));
