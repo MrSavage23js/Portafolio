@@ -964,6 +964,49 @@
       vertical-align: middle;
     }
 
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+      list-style: none
+    }
+
+    .service {
+      padding: 1.6rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: border-color 0.2s, transform 0.2s
+    }
+
+    .service:hover {
+      border-color: var(--red);
+      transform: translateY(-2px)
+    }
+
+    .service-num {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--red2);
+      letter-spacing: 0.15em;
+      margin-bottom: 0.9rem
+    }
+
+    .service h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.5rem
+    }
+
+    .service p {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      line-height: 1.65;
+      color: var(--muted)
+    }
+
     /* CERTS */
     .certs-grid {
       display: grid;
@@ -1186,6 +1229,7 @@
         <a href="#sobre">Sobre mí</a>
         <a href="#proyectos">Proyectos</a>
         <a href="#experiencia">Experiencia</a>
+        <a href="#servicios">Servicios</a>
         <a href="#formacion">Formación</a>
         <a href="#contacto">Contacto</a>
       </div>
@@ -1575,9 +1619,44 @@
 
   <div class="divider" aria-hidden="true"></div>
 
+  <!-- SERVICES -->
+  <section class="section" id="servicios">
+    <p class="chip">04 — Servicios</p>
+    <h2 class="sec-title">Qué puedo hacer por ti</h2>
+    <ul class="services-grid" role="list">
+      <li class="service">
+        <p class="service-num" aria-hidden="true">01</p>
+        <h3>Sitios web responsivos</h3>
+        <p>Páginas rápidas y adaptables a móvil, tablet y escritorio, listas para publicarse.</p>
+      </li>
+      <li class="service">
+        <p class="service-num" aria-hidden="true">02</p>
+        <h3>Sistemas de gestión a la medida</h3>
+        <p>Aplicaciones web internas con base de datos, usuarios y roles para ordenar procesos.</p>
+      </li>
+      <li class="service">
+        <p class="service-num" aria-hidden="true">03</p>
+        <h3>Tiendas online con pagos</h3>
+        <p>Catálogo, carrito e integración de pasarela de pago para vender en línea.</p>
+      </li>
+      <li class="service">
+        <p class="service-num" aria-hidden="true">04</p>
+        <h3>Rendimiento y SEO técnico</h3>
+        <p>Optimización de tiempos de carga, imágenes y estructura para buscadores.</p>
+      </li>
+      <li class="service">
+        <p class="service-num" aria-hidden="true">05</p>
+        <h3>Mantenimiento y soporte</h3>
+        <p>Actualizaciones, corrección de errores y soporte continuo de tu sitio o sistema.</p>
+      </li>
+    </ul>
+  </section>
+
+  <div class="divider" aria-hidden="true"></div>
+
   <!-- CERTS -->
   <section class="section" id="formacion">
-    <p class="chip">04 — Formación</p>
+    <p class="chip">05 — Formación</p>
     <h2 class="sec-title">Educación y certificados</h2>
     <div class="certs-grid">
       <div class="cert">
@@ -1608,7 +1687,7 @@
   <!-- CONTACT -->
   <section class="section" id="contacto">
     <div class="contact-wrap">
-      <p class="chip">05 — Contacto</p>
+      <p class="chip">06 — Contacto</p>
       <h2 class="sec-title">Hablemos 👋</h2>
       <p class="contact-desc">
         Tengo más de 3 años construyendo soluciones web reales para negocios y emprendedores.
