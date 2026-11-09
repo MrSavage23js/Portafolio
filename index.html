@@ -595,6 +595,13 @@
       margin-bottom: 0.3rem
     }
 
+    .inline-link {
+      color: var(--text);
+      text-decoration: underline;
+      text-decoration-color: var(--red);
+      text-underline-offset: 3px
+    }
+
     .exp-place {
       font-family: var(--mono);
       font-size: 0.8rem;
@@ -1044,9 +1051,22 @@
     <p class="chip">03 — Experiencia</p>
     <h2 class="sec-title">Trayectoria</h2>
     <div class="exp-item">
+      <div class="exp-date">Ago 2026 — Actualidad</div>
+      <div>
+        <h3 class="exp-role">Auxiliar de Sistemas y TI <span class="exp-badge">Puesto actual</span></h3>
+        <!-- Nombre de la empresa omitido a propósito. COMPLETAR: sector/industria si quieres mostrarlo -->
+        <p class="exp-place">Empresa del sector [COMPLETAR: industria] · México</p>
+        <ul class="exp-list">
+          <li>Desarrollo de sistemas web internos para distintas áreas de la empresa (ver <a href="#casos" class="inline-link">casos de estudio</a>)</li>
+          <li>Soporte técnico a usuarios y equipos [COMPLETAR: p. ej. hardware, redes, cuentas, impresoras]</li>
+          <li>[COMPLETAR: otra responsabilidad relevante, si aplica]</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
       <div class="exp-date">2022 — Actualidad</div>
       <div>
-        <p class="exp-role">Desarrollador Web Freelance</p>
+        <h3 class="exp-role">Desarrollador Web Freelance</h3>
         <p class="exp-place">Proyectos Independientes · México</p>
         <ul class="exp-list">
           <li>Diseño e implementación de sitios web responsivos y autoadministrables</li>
