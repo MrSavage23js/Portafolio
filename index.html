@@ -702,6 +702,12 @@
       border: 1px solid rgba(255, 204, 0, 0.3)
     }
 
+    .st-done {
+      background: rgba(80, 220, 80, 0.1);
+      color: #5de87a;
+      border: 1px solid rgba(80, 220, 80, 0.3)
+    }
+
     .st-todo {
       background: var(--surface2);
       color: var(--muted);
@@ -1337,6 +1343,7 @@
             <li class="sk">HTML5</li>
             <li class="sk">CSS3</li>
             <li class="sk">JavaScript ES6+</li>
+            <li class="sk">TypeScript</li>
             <li class="sk">React</li>
           </ul>
         </div>
@@ -1352,6 +1359,7 @@
         <div class="skill-group">
           <h4 class="skill-cat">Bases de datos</h4>
           <ul class="skills-wrap" role="list">
+            <li class="sk">PostgreSQL</li>
             <li class="sk">MySQL</li>
             <li class="sk">MongoDB</li>
             <li class="sk">Firebase</li>
@@ -1377,7 +1385,6 @@
   <section class="section" id="proyectos">
     <p class="chip">02 — Proyectos</p>
     <h2 class="sec-title">Lo que he construido</h2>
-    <!-- CASOS DE ESTUDIO: campos ocultos marcados como PENDIENTE (stack, rol, resultado, estado). -->
     <div class="proj-block" id="casos">
       <h3 class="sub-title">Casos de estudio <span class="count">sistemas internos</span></h3>
       <p class="sub-desc">Sistemas que desarrollo en mi puesto actual. Por confidencialidad no muestro capturas, nombres ni
@@ -1394,8 +1401,10 @@
             <dd>Las solicitudes de soporte llegaban sin folio, prioridad ni seguimiento centralizado.</dd>
             <dt>Solución</dt>
             <dd>Aplicación web donde cada solicitud recibe un folio único por departamento y año, se clasifica por nivel de urgencia con código de color y dispara notificaciones por correo (SMTP). Los administradores cuentan con un dashboard para dar seguimiento.</dd>
-            <!-- PENDIENTE Stack: [COMPLETAR: tecnologías usadas] -->
-            <!-- PENDIENTE Mi rol: [COMPLETAR: p. ej. análisis, diseño de BD, frontend y backend] -->
+            <dt>Stack</dt>
+            <dd>React · TypeScript · Vite · Node.js · Express · PostgreSQL · Kysely · Nodemailer (SMTP)</dd>
+            <dt>Mi rol</dt>
+            <dd>Diseño y desarrollo full stack: modelo de datos, API, interfaz web y notificaciones por correo.</dd>
             <dt>Resultado</dt>
             <dd>Proyecto en desarrollo.</dd>
           </dl>
@@ -1427,8 +1436,10 @@
             <dd>Las fichas técnicas de producto de varias empresas se manejaban sin control de versiones ni permisos por usuario.</dd>
             <dt>Solución</dt>
             <dd>Plataforma multiempresa sobre una base de datos relacional, con roles de usuario, versionado de fichas con historial de cambios y generación de la ficha en PDF.</dd>
-            <!-- PENDIENTE Stack: [COMPLETAR: tecnologías usadas] -->
-            <!-- PENDIENTE Mi rol: [COMPLETAR: tu rol en el proyecto] -->
+            <dt>Stack</dt>
+            <dd>React · TypeScript · Vite · Node.js · Express · PostgreSQL · Prisma · PDFKit</dd>
+            <dt>Mi rol</dt>
+            <dd>Desarrollo full stack: base de datos relacional, API, interfaz web y generación de PDF.</dd>
             <dt>Resultado</dt>
             <dd>Proyecto en desarrollo.</dd>
           </dl>
@@ -1450,16 +1461,19 @@
           <div class="case-head">
             <p class="card-num">Caso 03 / 04</p>
             <h4 class="case-name" id="case-produccion">App web de control de producción</h4>
-            <!-- PENDIENTE estado del proyecto -->
+            <span class="status st-done">Completado</span>
           </div>
           <dl class="case-info">
             <dt>Problema</dt>
             <dd>El control de pesos de producción se llevaba en un archivo de Excel, lo que complicaba la captura simultánea y la consistencia de los datos.</dd>
             <dt>Solución</dt>
             <dd>Aplicación web que digitaliza el control de pesos y reemplaza el Excel: varios usuarios capturan al mismo tiempo y la información se puede exportar a Excel cuando se necesita.</dd>
-            <!-- PENDIENTE Stack: [COMPLETAR: tecnologías usadas] -->
-            <!-- PENDIENTE Mi rol: [COMPLETAR: tu rol en el proyecto] -->
-            <!-- PENDIENTE Resultado: [COMPLETAR: resultado verificable, sin métricas no comprobables] -->
+            <dt>Stack</dt>
+            <dd>HTML · CSS · JavaScript · Firebase (Firestore) · ExcelJS</dd>
+            <dt>Mi rol</dt>
+            <dd>Desarrollo completo: interfaz de captura, sincronización en tiempo real y exportación a Excel.</dd>
+            <dt>Resultado</dt>
+            <dd>El control de pesos ya no depende de un archivo de Excel: las capturas se sincronizan en tiempo real entre el equipo y se exportan a Excel cuando se necesitan.</dd>
           </dl>
         </div>
         <div class="mock" role="img" aria-label="Vista ilustrativa con datos ficticios: tabla de captura de producción con botón de exportar a Excel">
@@ -1481,16 +1495,19 @@
           <div class="case-head">
             <p class="card-num">Caso 04 / 04</p>
             <h4 class="case-name" id="case-reportes">Procesador de reportes de ventas</h4>
-            <!-- PENDIENTE estado del proyecto -->
+            <span class="status st-done">Completado</span>
           </div>
           <dl class="case-info">
             <dt>Problema</dt>
             <dd>Revisar los reportes de ventas requería trabajo manual para obtener la información relevante.</dd>
             <dt>Solución</dt>
             <dd>Herramienta web: el usuario sube el reporte, el sistema lo procesa, lo cruza con el catálogo de productos y muestra la información.</dd>
-            <!-- PENDIENTE Stack: [COMPLETAR: tecnologías usadas] -->
-            <!-- PENDIENTE Mi rol: [COMPLETAR: tu rol en el proyecto] -->
-            <!-- PENDIENTE Resultado: [COMPLETAR: resultado verificable, sin métricas no comprobables] -->
+            <dt>Stack</dt>
+            <dd>React · TypeScript · Vite · Cloudflare Workers · Cloudflare D1 (SQL) · SheetJS / ExcelJS</dd>
+            <dt>Mi rol</dt>
+            <dd>Desarrollo completo: carga y procesamiento de reportes, base de datos e interfaz web.</dd>
+            <dt>Resultado</dt>
+            <dd>El cruce entre los reportes de ventas y el catálogo de productos se hace de forma automática dentro de la herramienta.</dd>
           </dl>
         </div>
         <div class="mock" role="img" aria-label="Vista ilustrativa con datos ficticios: carga de un reporte de ventas y gráfica de barras resultante">
